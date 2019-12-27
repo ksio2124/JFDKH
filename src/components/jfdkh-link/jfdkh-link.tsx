@@ -1,19 +1,21 @@
 import { Component, Prop, h } from '@stencil/core';
 
 @Component({
-  tag: 'my-first-component',
+  tag: 'jfdkh-link',
+  styleUrl: 'jfdkh-link.scss',
+  shadow: true
 })
 export class MyComponent {
 
   // Indicate that name should be a public property on the component
-  @Prop() name: string;
   @Prop() link: string;
+  @Prop() text: string;
 
   render() {
     return (
-      <p>
-        My name is {this.name}
-      </p>
+      <a href={this.link}>
+          {this.text}
+      </a>
     );
   }
 }

@@ -11,7 +11,12 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppRoot {}
+  interface JfdkhLink {
+    'link': string;
+    'text': string;
+  }
   interface MyFirstComponent {
+    'link': string;
     'name': string;
   }
 }
@@ -25,6 +30,12 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLJfdkhLinkElement extends Components.JfdkhLink, HTMLStencilElement {}
+  var HTMLJfdkhLinkElement: {
+    prototype: HTMLJfdkhLinkElement;
+    new (): HTMLJfdkhLinkElement;
+  };
+
   interface HTMLMyFirstComponentElement extends Components.MyFirstComponent, HTMLStencilElement {}
   var HTMLMyFirstComponentElement: {
     prototype: HTMLMyFirstComponentElement;
@@ -32,18 +43,25 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'app-root': HTMLAppRootElement;
+    'jfdkh-link': HTMLJfdkhLinkElement;
     'my-first-component': HTMLMyFirstComponentElement;
   }
 }
 
 declare namespace LocalJSX {
   interface AppRoot {}
+  interface JfdkhLink {
+    'link'?: string;
+    'text'?: string;
+  }
   interface MyFirstComponent {
+    'link'?: string;
     'name'?: string;
   }
 
   interface IntrinsicElements {
     'app-root': AppRoot;
+    'jfdkh-link': JfdkhLink;
     'my-first-component': MyFirstComponent;
   }
 }
@@ -55,6 +73,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'jfdkh-link': LocalJSX.JfdkhLink & JSXBase.HTMLAttributes<HTMLJfdkhLinkElement>;
       'my-first-component': LocalJSX.MyFirstComponent & JSXBase.HTMLAttributes<HTMLMyFirstComponentElement>;
     }
   }
